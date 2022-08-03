@@ -7,5 +7,5 @@ const Color SECOND_ORANGE = Color.fromRGBO(236, 179, 144, 1);
 
 const Color LIGHT_COLOR = Color.fromRGBO(252, 248, 232, 1);
 
-const Color successColor = Color(0x0035D06A);
-const Color failColor = Color(0x00F44336);
+const Color successColor = Color.fromARGB(255, 53, 208, 107);
+const Color failColor = Color.fromARGB(255, 244, 67, 54);

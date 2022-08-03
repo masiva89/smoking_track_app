@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_projects/core/constants/color_constants.dart';
 import 'package:flutter_projects/core/constants/size_constants.dart';
+import 'package:flutter_projects/core/date_manipulation.dart';
 import 'package:flutter_projects/features/dashboard/model/smoking.dart';
 
 class OldSmokingCard extends StatefulWidget {
@@ -36,7 +37,8 @@ class _OldSmokingCardState extends State<OldSmokingCard> {
               const Icon(Icons.smoking_rooms_rounded, color: LIGHT_COLOR),
               const SizedBox(width: 6),
               Text(
-                widget.smoking.dateTime,
+                DateManipulation()
+                    .dateTimeStringManipulation(widget.smoking.dateTime),
                 style: cardTitleText,
               ),
             ],

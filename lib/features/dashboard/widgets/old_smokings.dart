@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_projects/core/database/sqflite_manager.dart';
 import 'package:flutter_projects/core/providers/dashboard_provider.dart';
 import 'package:provider/provider.dart';
 
 import 'old_smoking_card.dart';
 
 class OldSmokings extends StatefulWidget {
-  final String type;
+  final FetchType type;
   const OldSmokings({super.key, required this.type});
 
   @override
@@ -22,13 +23,13 @@ class _OldSmokingsState extends State<OldSmokings> {
       physics: const NeverScrollableScrollPhysics(),
       itemCount: context
           .watch<DashboardProvider>()
-          .getSmokingsByDate(date: DateTime.now())
+          .getSmokingsByDate(type: widget.type)
           .length,
       itemBuilder: (context, index) {
         return OldSmokingCard(
           smoking: context
               .watch<DashboardProvider>()
-              .getSmokingsByDate(date: DateTime.now())[index],
+              .getSmokingsByDate(type: widget.type)[index],
         );
       },
     );

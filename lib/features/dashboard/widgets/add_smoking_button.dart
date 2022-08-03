@@ -1,7 +1,11 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_projects/core/constants/color_constants.dart';
 import 'package:flutter_projects/core/database/sqflite_manager.dart';
+import 'package:flutter_projects/core/date_manipulation.dart';
 import 'package:flutter_projects/core/providers/dashboard_provider.dart';
+import 'package:flutter_projects/core/providers/timer_provider.dart';
 import 'package:flutter_projects/features/dashboard/model/smoking.dart';
 import 'package:flutter_projects/features/dashboard/service/dashboard_service.dart';
 import 'package:provider/provider.dart';
@@ -29,18 +33,29 @@ class _AddSmokingButtonState extends State<AddSmokingButton> {
                 borderRadius: BorderRadius.circular(10),
               ),
             )),
-        onPressed: () {
+        onPressed: () async {
           final service = DashboardService();
-          //SqfliteManager(path: "smoking_track.db").delete();
-          service.getSmokingPrice().then((value) {
+          SqfliteManager(path: "smoking_track.db").delete();
+          //service.getSmokingPrice();
+
+          //service.clearSmokings();
+
+          //await service.setSmokingPrice(price: 1);
+          /* service.getSmokingPrice().then((value) {
             final smoking = Smoking(
               dateTime: DateTime.now().toString(),
               price: value,
             );
             context.read<DashboardProvider>().addSmoking(smoking);
-          });
-          //service.getSmokingPrice();
-          //service.clearSmokings();
+            context.read<TimerProvider>().resetTimer();
+          }); */
+
+          /* DateManipulation dateManipulation = DateManipulation();
+          log(dateManipulation
+              .dateTimeStringManipulation(DateTime.now().toIso8601String())); */
+          /* final result =
+              dateManipulation.whichDay(DateTime.now().add(Duration(days: -2)));
+          log(result); */
         },
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,

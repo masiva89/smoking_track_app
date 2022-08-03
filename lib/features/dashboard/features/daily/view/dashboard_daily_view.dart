@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_projects/core/database/sqflite_manager.dart';
 import 'package:flutter_projects/features/dashboard/widgets/content_header.dart';
 
 import '../../../widgets/add_smoking_button.dart';
@@ -16,25 +17,25 @@ class DashboardDailyView extends StatefulWidget {
 class _DashboardDailyViewState extends State<DashboardDailyView> {
   @override
   Widget build(BuildContext context) {
-    return Scrollbar(
-      child: ListView(
-        padding: const EdgeInsets.all(0),
-        children: const [
-          ContentHeader(title: "Genel Bakış"),
-          SizedBox(height: 7),
-          SmokingDatas(),
-          SizedBox(height: 7),
-          SmokingTimeCounter(),
-          SizedBox(height: 7),
-          AddSmokingButton(),
-          SizedBox(height: 7),
-          ContentHeader(title: "Geçmiş"),
-          SizedBox(height: 7),
-          OldSmokings(
-            type: "daily",
-          ),
-        ],
-      ),
+    return ListView(
+      padding: const EdgeInsets.all(0),
+      children: const [
+        ContentHeader(title: "Genel Bakış"),
+        SizedBox(height: 7),
+        SmokingDatas(
+          type: FetchType.today,
+        ),
+        SizedBox(height: 7),
+        SmokingTimeCounter(),
+        SizedBox(height: 7),
+        AddSmokingButton(),
+        SizedBox(height: 7),
+        ContentHeader(title: "Geçmiş"),
+        SizedBox(height: 7),
+        OldSmokings(
+          type: FetchType.today,
+        ),
+      ],
     );
   }
 }

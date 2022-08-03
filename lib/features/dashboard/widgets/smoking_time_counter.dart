@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_projects/core/constants/color_constants.dart';
 import 'package:flutter_projects/core/constants/size_constants.dart';
+import 'dart:async';
+
+import 'package:provider/provider.dart';
+
+import '../../../core/providers/timer_provider.dart';
 
 class SmokingTimeCounter extends StatefulWidget {
   const SmokingTimeCounter({super.key});
@@ -29,7 +34,7 @@ class _SmokingTimeCounterState extends State<SmokingTimeCounter> {
             style: contentHeaderTextStyle,
           ),
           Text(
-            "00:32:14",
+            context.watch<TimerProvider>().time,
             style: contentHeaderTextStyleBig,
           )
         ],
