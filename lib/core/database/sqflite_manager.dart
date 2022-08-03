@@ -35,7 +35,7 @@ class SqfliteManager {
           'CREATE TABLE smoking_limit (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, smoking_limit INTEGER)',
         )
             .then((value) {
-          db.insert('smoking_limit', {"smoking_limit": 11});
+          db.insert('smoking_limit', {"smoking_limit": 11}); //asdasld
         });
         await db
             .execute(
